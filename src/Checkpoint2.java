@@ -1,6 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
+@SuppressWarnings("unused")
 public class Checkpoint2
 {
 	private static ArrayList<Warehouse> warehouses;
@@ -27,7 +28,7 @@ public class Checkpoint2
 			switch (selection)
 			{
 			case "a":
-				test.warehouses.add(addRecord(prompt));
+				Checkpoint2.warehouses.add(addRecord(prompt));
 				break;
 			case "b":
 				editRecord(prompt, test);
@@ -54,9 +55,9 @@ public class Checkpoint2
 	
 	public static void displayWarehouses(Checkpoint2 test)
 	{
-		for (Warehouse w : test.warehouses)
+		for (Warehouse w : Checkpoint2.warehouses)
 		{
-			System.out.println(test.warehouses.indexOf(w) + ". " + w);
+			System.out.println(Checkpoint2.warehouses.indexOf(w) + ". " + w);
 		}
 	}
 	
@@ -89,7 +90,7 @@ public class Checkpoint2
 	{
 		displayWarehouses(test);
 		System.out.print("Choose a warehouse: ");
-		Warehouse chosen = test.warehouses.get(Integer.parseInt(prompt.nextLine()));
+		Warehouse chosen = Checkpoint2.warehouses.get(Integer.parseInt(prompt.nextLine()));
 		
 		System.out.println("a. City");
 		System.out.println("b. Address");
@@ -128,7 +129,7 @@ public class Checkpoint2
 			chosen.setDroneCapacity(Integer.parseInt(prompt.nextLine()));
 			break;
 		case "g":
-			test.warehouses.remove(chosen);
+			Checkpoint2.warehouses.remove(chosen);
 			break;
 		default:
 			System.out.println("Invalid selection");

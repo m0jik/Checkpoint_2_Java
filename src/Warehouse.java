@@ -1,6 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
+@SuppressWarnings("unused")
 public class Warehouse
 {
 	private String city;
