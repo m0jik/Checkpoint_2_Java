@@ -16,7 +16,7 @@ public class Checkpoint2
 		Checkpoint2 test = new Checkpoint2();
 		
 		Scanner prompt = new Scanner(System.in);
-		String[] options = {"a. Add new record", "b. Edit/delete record", "c. Search", "quit. Quit"};
+		String[] options = {"a. Add new record", "b. Edit/delete record", "c. Search", "d. Rent equipment", "e. Return equipment", "f. Delivery of equipment", "g. Pickup of equipment", "quit. Quit"};
 		String selection = "";
 		
 		while (!selection.equals("quit"))
@@ -34,7 +34,12 @@ public class Checkpoint2
 				editRecord(prompt, test);
 				break;
 			case "c":
-				search();
+				Warehouse searchedWarehouse = search(prompt);
+				if (searchedWarehouse == null) {
+					System.out.println("No warehouse found.");
+				} else {
+					System.out.println(searchedWarehouse);
+				}
 				break;
 			default:
 				System.out.println("Invalid Selection");
@@ -137,8 +142,16 @@ public class Checkpoint2
 		}
 	}
 	
-	public static void search()
+	public static Warehouse search(Scanner prompt)
 	{
-		
+		System.out.print("Enter address: ");
+		String addressSel = prompt.nextLine();
+		for (int i = 0; i < warehouses.size(); i++) {
+			Warehouse currWarehouse = warehouses.get(i);
+			if (currWarehouse.getAddress().equals(addressSel)) {
+				return currWarehouse;
+			}
+		}
+		return null;
 	}
 }
